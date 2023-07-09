@@ -1,187 +1,254 @@
-span {
+@charset "UTF-8";
+
+/* 共通部分
+------------------- */
+html {
     font-size: 20px;
 }
-body {
-    margin: 0; padding: 0;
+
+ul {
+    list-style-type: none;
 }
 
-.top {
+
+/* HEADER
+------------------- */
+.page-header {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    margin: 0 20px 0 20px;
 }
 
-.menu-list {
+.menu-nav {
     display: flex;
-    flex-direction: row;
 }
 
-.menu-item {
-    display: block;
-    margin-left: 20px;
+.menu-nav li {
+    margin-left: 36px;
 }
 
-.mobile-menu {
+.menu-thumbnail {
     display: none;
 }
 
+.menu-mobile {
+    display: none;
+}
+
+.wrapper {
+    max-width: 100%;
+    padding: 0 1%;
+}
+
+@media (max-width: 600px) and (min-width: 360px) {
+    body {
+        position: relative;
+        z-index: 1;
+    }
+    .menu-nav {
+        display: none;
+    }
+    .menu-thumbnail {
+        display: block;
+    }
+
+    .menu-mobile ul li {
+        margin-top: 20px;
+    }
+
+    .menu-thumbnail:active + .menu-mobile {
+        display: block;
+        position: absolute;
+        z-index: 2;
+        right: 0px;
+        width: 50%;
+        height: 100vh;
+        background-color: aliceblue;
+        display: flex;
+        justify-content: center;
+        border-style: outset;
+        border-width: 0 0 0 1px;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* BANNER
+------------------- */
 .banner {
+    background-color: antiquewhite;
     height: 250px;
-    background-color: #eaeaea;
+    font-size: 40px;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 0 0 20px 0;
 }
 
-.banner-text {
-    display: flex;
-    justify-content: center;
-    font-size: 40px
+@media (max-width: 600px) and (min-width: 360px) {
+    .banner {
+        text-align: center;
+    }
 }
 
-.container {
+/* SECTION
+------------------- */
+section {
     width: 1200px;
-    margin: 0 auto;
-}
-
-.product {
     display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
 }
 
 .product-item {
-    flex-basis: calc(100% - 40px);
+    width: calc((100% - 40px) / 3);
     height: 50px;
-    margin-right: 20px;
-    background-color: #eaeaea;
     display: flex;
     align-items: center;
+    background-color: bisque;
 }
 
-.product-item:last-child {
-    margin-right: 0;
+.product-item:not(:first-child) {
+    margin-left: 20px;
 }
 
 .product-item img {
-    width: 80px;
-    height: auto;
-    margin-right: 10px;
     object-fit: cover;
 }
 
-.title {
+.product-text {
+    margin-left: 10px;
+}
+
+@media (max-width: 1200px) {
+    section {
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 20px auto;
+    }
+
+    .product-item{
+        width: calc((100% - 20px) / 2);
+        margin: 0 0 20px 0;
+    }
+
+    .product-item:last-child {
+        width: 100%;
+        margin: 0 0 0 0;
+    }
+
+    .product-item:not(:first-child) {
+        margin-left: 0px;
+    }
+
+    .product-item:first-child {
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 600px) and (min-width: 360px) {
+    section {
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 20px auto;
+    }
+
+    .product-item{
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+
+    .product-item:first-child {
+        margin-right: 0px;
+    }
+}
+
+/* ARTICLE
+------------------- */
+article {
+    width: 1200px;
     display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
     flex-wrap: wrap;
 }
 
 .title-item {
     width: calc((100% - 100px) / 6);
-    margin-top: 20px;
-    margin-right: 20px;
-    height: 180px;
+    height: 250px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    background-color: #eaeaea;
+    margin: 0 0 20px 0;
+    position: relative;
 }
 
+.title-item:not(:nth-child(6n)) {
+    margin-right: 20px;
+}
 
-.title-item img {
+.title-pic {
     width: 100%;
-    height: 340px;
+    height: 100%;
     object-fit: cover;
 }
 
+.star {
+    width: 15%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
 .title-text {
-    text-align: left;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(227, 164, 78, 0.5);
+    position: absolute;
+    bottom: 0px;
 }
 
-@media (min-width: 1200px){
-    .title-item:nth-child(6n) {
-        margin-right: 0;
-    }
-}
-
-
-@media (max-width: 1200px){
-    .container {
+@media (max-width: 1200px) {
+    article {
         width: 90%;
-        margin: 0 auto;
-    }
-    .product {
+        display: flex;
         flex-wrap: wrap;
-        justify-content:center;
-    }
-    .product-item {
-        flex-basis: calc((100% - 20px) / 2);
-        margin-bottom: 20px;
-        margin-right: 20px;
-    }
-    .product-item:last-child {
-        flex-basis:100%;
-    }
-
-    .product-item:nth-child(2n) {
-        margin-right: 0;
-    }
-
-    .title {
-        flex-wrap: wrap;
-        justify-content:space-between;
+        justify-content: space-between;
+        margin: 20px auto;
     }
 
     .title-item {
         width: calc((100% - 60px) / 4);
-        margin-right: 20px;
+        
     }
 
-    .title-item:nth-child(4n) {
-        margin-right: 0;
+    .title-item:not(:nth-child(6n)) {
+        margin-right: 0px;
+    }
+
+    .title-item:not(:nth-child(4n)) {
+        margin-right: 20px;
     }
 }
 
-
-@media (max-width: 600px){
-    .menu-list {
-        display: none;
-    }
-
-    .mobile-menu {
-        display: block;
-    }
-    .banner-text {
-        text-align: center;
-    }
-    .container {
+@media (max-width: 600px) and (min-width: 360px) {
+    article {
         width: 90%;
-        margin: 0 auto;
-    }
-
-    .product {
+        display: flex;
         flex-wrap: wrap;
-        justify-content:center;
-    }
-
-    .product-item {
-        flex-basis: 100%;
-        margin-bottom: 20px;
-        margin-right: 0px;
-    }
-
-    .title {
-        flex-wrap: wrap;
-        justify-content: center;
-        flex-direction: column;
+        justify-content: space-between;
+        margin: 20px auto;
     }
 
     .title-item {
-        width: 100%;
-        height: 320px;
+        width: 100%;    
+    }
+
+    .title-item:not(:nth-child(4n)) {
         margin-right: 0px;
-        background-color: #eaeaea;
     }
 }
