@@ -16,6 +16,7 @@ ul {
 .page-header {
     display: flex;
     justify-content: space-between;
+    height: 30px;
 }
 
 .menu-nav {
@@ -32,6 +33,20 @@ ul {
 
 .menu-mobile {
     display: none;
+    position: absolute;
+    z-index: 1;
+    right: 0px;
+    width: 50%;
+    height: 100vh;
+    background-color: aliceblue;
+    text-align: center;
+    border-style: outset;
+    border-width: 0 0 0 1px;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-mobile ul li {
+    margin-top: 20px;
 }
 
 .wrapper {
@@ -50,25 +65,10 @@ ul {
     .menu-thumbnail {
         display: block;
     }
-
-    .menu-mobile ul li {
-        margin-top: 20px;
+    .menu-mobile {
+        display: none;
     }
-
-    .menu-thumbnail:active + .menu-mobile {
-        display: block;
-        position: absolute;
-        z-index: 2;
-        right: 0px;
-        width: 50%;
-        height: 100vh;
-        background-color: aliceblue;
-        display: flex;
-        justify-content: center;
-        border-style: outset;
-        border-width: 0 0 0 1px;
-        border-color: rgba(255, 255, 255, 0.1);
-    }
+        
 }
 
 /* BANNER
