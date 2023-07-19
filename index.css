@@ -101,6 +101,8 @@ section {
     width: calc((100% - 40px) / 3);
     height: 50px;
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
     background-color: bisque;
 }
@@ -108,12 +110,17 @@ section {
 .product-item:not(:first-child) {
     margin-left: 20px;
 }
-
-.product-item img {
+.product-item .attractionPic {
+    height: 50px;
+    width: 80px;
+}
+.product-item .attractionPic img{
+    max-height: 100%;
+    max-width: 100%;
     object-fit: cover;
 }
 
-.product-text {
+.product-item .attractionName {
     margin-left: 10px;
 }
 
@@ -188,7 +195,12 @@ article {
     margin-right: 20px;
 }
 
-.title-pic {
+.title-item .attractionPic {
+    width: 100%;
+    height: 100%;
+}
+
+.title-item .attractionPic img{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -201,13 +213,14 @@ article {
     right: 10px;
 }
 
-.title-text {
+.title-item .attractionName {
     width: 100%;
     height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(227, 164, 78, 0.5);
+    text-align: center;
+    background-color: rgba(227, 164, 78, 0.8);
     position: absolute;
     bottom: 0px;
 }
@@ -233,6 +246,10 @@ article {
     .title-item:not(:nth-child(4n)) {
         margin-right: 20px;
     }
+
+    .title-item .attractionName {
+    height: 30%;
+    }
 }
 
 @media (max-width: 600px) and (min-width: 360px) {
@@ -250,5 +267,9 @@ article {
 
     .title-item:not(:nth-child(4n)) {
         margin-right: 0px;
+    }
+
+    .title-item .attractionName {
+    height: 20%;
     }
 }
